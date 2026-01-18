@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Premium Hardware</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Categories Grid */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .category-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .category-info {
+            padding: 2rem;
+        }
+
+        .category-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .category-info p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .category-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--light-gray);
+            border-radius: 12px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="homepage.html" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>Premium Hardware</span>
+            </a>
+            <div class="nav-links">
+                <a href="homepage.html">Home</a>
+                <a href="categories.html" class="active">Categories</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="cart.html" class="btn btn-outline"
+                    style="color: var(--primary-color); border-color: var(--primary-color);">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge"
+                        style="display: none; background: #ef4444; color: white; padding: 2px 6px; border-radius: 50%; font-size: 0.75rem; margin-left: 5px;">0</span>
+                </a>
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="register.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Product Categories</h1>
+            <p>Explore our comprehensive range of hardware categories, each designed to meet your specific project needs
+            </p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="10 Compound Miter Saw.jpg"
+                        alt="Power Tools" class="category-img">
+                    <div class="category-info">
+                        <h3>Power Tools</h3>
+                        <p>Professional-grade power tools for construction, woodworking, and DIY projects. From drills
+                            to saws, we have everything you need.</p>
+                        <div class="category-stats">
+                            <div class="stat">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.8</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24h</div>
+                                <div class="stat-label">Delivery</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Explore Power Tools</a>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="65-Piece Homeowner Tool Set.jpg" alt="Hand Tools" class="category-img">
+                    <div class="category-info">
+                        <h3>Hand Tools</h3>
+                        <p>Essential hand tools for every workshop. High-quality hammers, screwdrivers, wrenches, and
+                            more for precision work.</p>
+                        <div class="category-stats">
+                            <div class="stat">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.9</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24h</div>
+                                <div class="stat-label">Delivery</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Explore Hand Tools</a>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="Professional Safety Helmet.png"
+                        alt="Safety Equipment" class="category-img">
+                    <div class="category-info">
+                        <h3>Safety Equipment</h3>
+                        <p>Protect yourself with our comprehensive safety gear. Helmets, gloves, goggles, and protective
+                            clothing for all work environments.</p>
+                        <div class="category-stats">
+                            <div class="stat">
+                                <div class="stat-number">80+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.7</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24h</div>
+                                <div class="stat-label">Delivery</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Explore Safety Equipment</a>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="PVC Pipe & Fittings Set.png"
+                        alt="Plumbing" class="category-img">
+                    <div class="category-info">
+                        <h3>Plumbing</h3>
+                        <p>Complete plumbing solutions from pipes and fittings to faucets and fixtures.
+                            Professional-grade materials for all plumbing needs.</p>
+                        <div class="category-stats">
+                            <div class="stat">
+                                <div class="stat-number">120+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.6</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24h</div>
+                                <div class="stat-label">Delivery</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Explore Plumbing</a>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="Ceiling Fan.jpg"
+                        alt="Electrical" class="category-img">
+                    <div class="category-info">
+                        <h3>Electrical</h3>
+                        <p>Electrical supplies and components for home and commercial use. Wires, switches, outlets, and
+                            lighting solutions.</p>
+                        <div class="category-stats">
+                            <div class="stat">
+                                <div class="stat-number">180+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.8</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24h</div>
+                                <div class="stat-label">Delivery</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Explore Electrical</a>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <img src="Pipe Clamp.jpg"
+                        alt="Fasteners" class="category-img">
+                    <div class="category-info">
+                        <h3>Fasteners</h3>
+                        <p>Nuts, bolts, screws, and anchors for all fastening needs. High-quality fasteners for
+                            construction and assembly projects.</p>
+                        <div class="category-stats">
+                            <div class="stat">
+                                <div class="stat-number">300+</div>
+                                <div class="stat-label">Products</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.9</div>
+                                <div class="stat-label">Rating</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24h</div>
+                                <div class="stat-label">Delivery</div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-primary">Explore Fasteners</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="homepage.html" class="footer-logo">
+                        <i class="fas fa-tools"></i> Premium Hardware
+                    </a>
+                    <p>Your one-stop shop for all hardware tools and equipment, powered by AI to provide you with the
+                        best recommendations for your projects.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 353 main street, Kalmunai
+                            Sri Lanka</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> 0771026466</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> hamyanmhamd875@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Premium Hardware. All rights reserved. | <a href="#" style="color: #9ca3af;">Privacy
+                        Policy</a> | <a href="#" style="color: #9ca3af;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

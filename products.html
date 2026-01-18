@@ -1,0 +1,2296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Premium Hardware</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Critical: Handle image errors immediately to show fallback
+        // This runs before images load to ensure no broken icons appear
+        document.addEventListener('error', function (e) {
+            if (e.target.tagName.toLowerCase() === 'img') {
+                if (e.target.dataset.fixed) return;
+                e.target.dataset.fixed = "true";
+
+                const text = e.target.alt || 'Premium Product';
+                // Premium gradient SVG
+                const svg = `
+                <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f3f4f6;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#e5e7eb;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#grad)"/>
+                    <rect width="100%" height="100%" fill="none" stroke="#e5e7eb" stroke-width="2"/>
+                    <text x="50%" y="50%" font-family="Segoe UI, Roboto, Arial" font-size="20" font-weight="600" fill="#4b5563" text-anchor="middle" dy=".3em">${text}</text>
+                </svg>`;
+
+                e.target.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg.trim());
+            }
+        }, true);
+    </script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Navigation */
+        nav {
+            background: #ffffff;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1f2937;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            color: #3b82f6;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6b7280;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #d1d5db;
+            color: #6b7280;
+            position: relative;
+        }
+
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 6rem 0 3rem;
+            background: #f8fafc;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Filters and Search */
+        .filters-section {
+            padding: 2rem 0;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .filters-container {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-filter {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .sort-dropdown {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 4rem 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-category {
+            display: inline-block;
+            background: var(--light-gray);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .product-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .product-description {
+            color: #6b7280;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-rating .stars {
+            color: #f59e0b;
+        }
+
+        .product-rating .count {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-cart {
+            flex: 1;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cart:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-wishlist {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-wishlist:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+        }
+
+        .btn-wishlist.active {
+            background: #ef4444;
+            border-color: #ef4444;
+            color: white;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .pagination-btn {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            background: white;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .pagination-btn:hover,
+        .pagination-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: #f3f4f6;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+        }
+
+        .footer-heading {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.25rem;
+            }
+
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="homepage.html" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>Premium Hardware</span>
+            </a>
+            <div class="nav-links">
+                <a href="homepage.html">Home</a>
+                <a href="categories.html">Categories</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="cart.html" class="btn btn-outline"
+                    style="color: var(--primary-color); border-color: var(--primary-color);">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge"
+                        style="display: none; background: #ef4444; color: white; padding: 2px 6px; border-radius: 50%; font-size: 0.75rem; margin-left: 5px;">0</span>
+                </a>
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="register.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Products</h1>
+            <p>Discover our comprehensive range of hardware tools and equipment, carefully selected for quality and
+                performance</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+        <div class="container">
+            <div class="filters-container">
+                <div class="search-filter">
+                    <input type="text" class="search-input" placeholder="Search products..." id="searchInput">
+                </div>
+                <div class="category-filter">
+                    <button class="filter-btn active" data-category="all">All Products</button>
+                    <button class="filter-btn" data-category="power-tools">Power Tools</button>
+                    <button class="filter-btn" data-category="hand-tools">Hand Tools</button>
+                    <button class="filter-btn" data-category="safety">Safety</button>
+                    <button class="filter-btn" data-category="plumbing">Plumbing</button>
+                    <button class="filter-btn" data-category="electrical">Electrical</button>
+                </div>
+                <select class="sort-dropdown" id="sortDropdown">
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="newest">Newest</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-grid" id="productsGrid">
+                <!-- Power Tools -->
+                <div class="product-card" data-category="power-tools" data-id="drill-20v">
+                    <img src="20V MAX XR Brushless Drill.png" alt="Cordless Drill"
+                        class="product-img">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>20V MAX XR Brushless Drill</h3>
+                        <p class="product-description">Professional-grade cordless drill with brushless motor technology
+                            for maximum power and runtime.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(128 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 65,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="circular-saw-7.25">
+                    <img src="7.25Circular Saw1.jpg" alt="Circular Saw"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>7.25" Circular Saw</h3>
+                        <p class="product-description">High-performance circular saw with laser guide for precise cuts
+                            in wood and other materials.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(95 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 49,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hand Tools -->
+                <div class="product-card" data-category="hand-tools" data-id="tool-set-65">
+                    <img src="61,.jpg" alt="Tool Set" class="product-img">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>65-Piece Homeowner's Tool Set</h3>
+                        <p class="product-description">Complete tool set with everything you need for home repairs and
+                            DIY projects.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(87 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 49,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Equipment -->
+                <div class="product-card" data-category="safety" data-id="safety-kit-deluxe">
+                    <img src="Deluxe Safety Kit (10-Piece).png" alt="Safety Kit" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Deluxe Safety Kit (10-Piece)</h3>
+                        <p class="product-description">Comprehensive safety kit including helmet, gloves, goggles, and
+                            protective gear.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(214 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 26,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="safety-helmet-pro">
+                    <img src="Professional Safety Helmet.png" alt="Safety Helmet"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Professional Safety Helmet</h3>
+                        <p class="product-description">ANSI-compliant safety helmet with adjustable suspension system.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(156 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 15,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plumbing -->
+                <div class="product-card" data-category="plumbing" data-id="pvc-pipe-set">
+                    <img src="PVC Pipe & Fittings Set.png" alt="PVC Pipe Set"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>PVC Pipe & Fittings Set</h3>
+                        <p class="product-description">Complete PVC pipe and fittings set for plumbing projects and
+                            repairs.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(63 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 20,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing" data-id="pipe-wrench-heavy">
+                    <img src="Heavy Duty Pipe Wrench Set.jpg" alt="Pipe Wrench"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Heavy Duty Pipe Wrench Set</h3>
+                        <p class="product-description">Professional pipe wrench set for plumbing installations and
+                            repairs.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(89 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 30,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electrical -->
+                <div class="product-card" data-category="electrical" data-id="led-bulb-10">
+                    <img src="Energy Saver LED Bulb Pack (10)_.jpg" alt="LED Bulb Pack"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>Energy Saver LED Bulb Pack (10)</h3>
+                        <p class="product-description">Energy-efficient LED bulbs with long lifespan and bright
+                            illumination.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(142 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 13,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical" data-id="gfci-outlet-usb">
+                    <img src="GFCI Outlet with USB Ports.jpg" alt="Electrical Outlet"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>GFCI Outlet with USB Ports</h3>
+                        <p class="product-description">Modern GFCI outlet with built-in USB charging ports for
+                            convenience.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(203 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 8,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Power Tools (8 more) -->
+                <div class="product-card" data-category="power-tools" data-id="impact-driver-18v">
+                    <img src="18V Impact Driver Kit.jpg" alt="Impact Driver"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>18V Impact Driver Kit</h3>
+                        <p class="product-description">Compact impact driver with brushless motor for fastening and
+                            driving screws.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(156 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 55,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="angle-grinder-4.5">
+                    <img src="4.5 Angle Grinder.png" alt="Angle Grinder"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>4.5" Angle Grinder</h3>
+                        <p class="product-description">Heavy-duty angle grinder for cutting, grinding, and polishing
+                            metal and stone.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(112 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 42,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="jigsaw-variable">
+                    <img src="Variable Speed Jigsaw.jpg" alt="Jigsaw" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>Variable Speed Jigsaw</h3>
+                        <p class="product-description">Precision jigsaw with orbital action for smooth curved cuts in
+                            wood and metal.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(98 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 38,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="rotary-hammer-sds">
+                    <img src="Professional Hammer Set (3-Piece).jpg" alt="Rotary Hammer"
+                        class="product-img">
+                    <div class="product-badge">New</div>
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>SDS Plus Rotary Hammer</h3>
+                        <p class="product-description">Professional rotary hammer drill for concrete drilling and
+                            chiseling.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(87 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 85,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="orbital-sander">
+                    <img src="Random Orbital Sander.jpg" alt="Orbital Sander"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>Random Orbital Sander</h3>
+                        <p class="product-description">Dual-action orbital sander for smooth finishing on wood surfaces.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(134 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 35,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="reciprocating-saw">
+                    <img src="Reciprocating Saw.jpg" alt="Reciprocating Saw"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>Reciprocating Saw</h3>
+                        <p class="product-description">Heavy-duty reciprocating saw for demolition and cutting through
+                            various materials.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(76 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 52,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="electric-planer">
+                    <img src="Electric Planer.png" alt="Planer" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>Electric Planer</h3>
+                        <p class="product-description">Compact electric planer for smoothing and leveling wood surfaces.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(91 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 45,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="router-variable">
+                    <img src="Variable Speed Router.jpg" alt="Router" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>Variable Speed Router</h3>
+                        <p class="product-description">Professional router for edge profiling, dado cutting, and
+                            decorative work.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(105 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 68,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="miter-saw-10">
+                    <img src="10 Compound Miter Saw.jpg" alt="Miter Saw" class="product-img">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>10" Compound Miter Saw</h3>
+                        <p class="product-description">Precision miter saw for accurate angled cuts in wood and trim
+                            work.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(189 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 95,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="power-tools" data-id="table-saw-portable">
+                    <img src="Portable Table Saw 1.jpg" alt="Table Saw" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Power Tools</span>
+                        <h3>Portable Table Saw</h3>
+                        <p class="product-description">Compact table saw with folding stand for precise rip cuts and
+                            crosscuts.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(142 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 125,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Hand Tools (9 more) -->
+                <div class="product-card" data-category="hand-tools" data-id="hammer-set-pro">
+                    <img src="SDS Plus Rotary Hammer.jpg" alt="Hammer Set" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Professional Hammer Set (3-Piece)</h3>
+                        <p class="product-description">Heavy-duty hammer set including claw, ball peen, and rubber
+                            mallet.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(167 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 12,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="screwdriver-set-20">
+                    <img src="Magnetic Screwdriver Set (20-Piece).jpg" alt="Screwdriver Set"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Magnetic Screwdriver Set (20-Piece)</h3>
+                        <p class="product-description">Complete screwdriver set with various sizes and types for all
+                            applications.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(203 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 8,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="wrench-set-15">
+                    <img src="Combination Wrench Set (15-Piece).jpg" alt="Wrench Set" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Combination Wrench Set (15-Piece)</h3>
+                        <p class="product-description">Chrome-plated combination wrenches in metric and SAE sizes.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(145 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 18,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="pliers-set-8">
+                    <img src="Professional Pliers Set (8-Piece).jpg" alt="Pliers Set" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Professional Pliers Set (8-Piece)</h3>
+                        <p class="product-description">Multi-purpose pliers set including needle-nose, cutting, and
+                            locking pliers.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(178 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 15,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="chisel-set-wood">
+                    <img src="Wood Chisel Set (6-Piece).png" alt="Chisel Set" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Wood Chisel Set (6-Piece)</h3>
+                        <p class="product-description">High-carbon steel chisels for precise woodworking and carving.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(96 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 11,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="level-48-magnetic">
+                    <img src="48 Magnetic Level.png" alt="Level" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>48" Magnetic Level</h3>
+                        <p class="product-description">Professional magnetic level with three vials for accurate
+                            leveling.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(124 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 9,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="tape-measure-25">
+                    <img src="25ft Tape Measure.jpg" alt="Tape Measure"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>25ft Tape Measure</h3>
+                        <p class="product-description">Heavy-duty tape measure with magnetic tip and standout blade.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(256 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 3,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="utility-knife">
+                    <img src="Retractable Utility Knife.png" alt="Utility Knife"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Retractable Utility Knife</h3>
+                        <p class="product-description">Heavy-duty utility knife with quick-change blade mechanism.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(189 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 2,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="ratchet-set-40">
+                    <img src="ratchet-set-40.jpg" alt="Ratchet Set"
+                        class="product-img">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Socket Ratchet Set (40-Piece)</h3>
+                        <p class="product-description">Complete socket set with ratchet, extensions, and various socket
+                            sizes.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(234 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 28,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="hand-tools" data-id="file-set-metal">
+                    <img src="file-set-metal.jpg" alt="File Set" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Hand Tools</span>
+                        <h3>Metal File Set (10-Piece)</h3>
+                        <p class="product-description">Professional file set for shaping and smoothing metal and wood
+                            surfaces.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(87 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 7,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Safety Equipment (8 more) -->
+                <div class="product-card" data-category="safety" data-id="safety-glasses-6">
+                    <img src="safety-glasses-.jpg" alt="Safety Glasses"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Anti-Fog Safety Glasses (6-Pack)</h3>
+                        <p class="product-description">ANSI Z87.1 certified safety glasses with anti-fog coating.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(198 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 4,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="work-gloves-leather">
+                    <img src="work-gloves-leather.jpg" alt="Work Gloves"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Leather Work Gloves (Pair)</h3>
+                        <p class="product-description">Heavy-duty leather gloves with reinforced palms for protection.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(167 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 3,200</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="ear-muffs-electronic">
+                    <img src="ear-muffs-electronic.jpg" alt="Ear Protection"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Electronic Ear Muffs</h3>
+                        <p class="product-description">Noise-canceling ear protection with sound amplification
+                            technology.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(134 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 12,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="respirator-n95">
+                    <img src="respirator-n95.jpg" alt="Respirator" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>N95 Respirator Mask (10-Pack)</h3>
+                        <p class="product-description">NIOSH-approved respirator masks for dust and particle protection.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(289 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 6,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="safety-vest-hv">
+                    <img src="safety-vest-hv.jpg" alt="Safety Vest"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>High-Visibility Safety Vest</h3>
+                        <p class="product-description">ANSI Class 2 safety vest with reflective strips for visibility.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(156 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 5,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="knee-pads-gel">
+                    <img src="knee-pads-gel.jpg" alt="Knee Pads" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Gel-Filled Knee Pads</h3>
+                        <p class="product-description">Comfortable knee pads with gel padding for extended use.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(112 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 4,800</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="first-aid-kit-50">
+                    <img src="first-aid-kit-screenshot.png" alt="First Aid Kit"
+                        class="product-img">
+                    <div class="product-badge">Essential</div>
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>Professional First Aid Kit (50-Piece)</h3>
+                        <p class="product-description">Comprehensive first aid kit for workplace and home emergencies.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(245 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 8,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="safety" data-id="fire-extinguisher-abc">
+                    <img src="fire-extinguisher-abc.jpg" alt="Fire Extinguisher"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Safety Equipment</span>
+                        <h3>5lb ABC Fire Extinguisher</h3>
+                        <p class="product-description">UL-listed fire extinguisher for Class A, B, and C fires.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(178 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 15,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Plumbing (8 more) -->
+                <div class="product-card" data-category="plumbing">
+                    <img src="Faucet.jpg" alt="Faucet" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Single-Handle Kitchen Faucet</h3>
+                        <p class="product-description">Modern kitchen faucet with pull-down sprayer and ceramic disc
+                            valve.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(187 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 25,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Toilet Seat 1.jpg" alt="Toilet Seat" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Soft-Close Toilet Seat</h3>
+                        <p class="product-description">Slow-closing toilet seat with quick-release hinges for easy
+                            cleaning.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(156 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 8,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Shower Head.jpg" alt="Shower Head" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Rainfall Shower Head</h3>
+                        <p class="product-description">Large rainfall shower head with adjustable spray patterns.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(134 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 18,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Sink Strainer.jpg" alt="Sink Strainer" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Stainless Steel Sink Strainer</h3>
+                        <p class="product-description">Heavy-duty sink strainer with removable basket for easy cleaning.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(198 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 2,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Drain Cleaner.jpg" alt="Drain Cleaner" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Drain Snake Auger (25ft)</h3>
+                        <p class="product-description">Professional drain cleaning tool for clearing clogged pipes.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(112 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 12,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Pipe Clamp.jpg" alt="Pipe Clamp" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Pipe Clamp Set (10-Piece)</h3>
+                        <p class="product-description">Stainless steel pipe clamps for securing pipes and hoses.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(89 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 4,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Plumber Putty.jpg" alt="Plumber Putty" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>Plumber's Putty (1lb)</h3>
+                        <p class="product-description">Waterproof plumber's putty for sealing sink and drain
+                            installations.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(167 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 1,800</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="plumbing">
+                    <img src="Water Heater1.jpg" alt="Water Heater" class="product-img">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-info">
+                        <span class="product-category">Plumbing</span>
+                        <h3>50-Gallon Water Heater</h3>
+                        <p class="product-description">Energy-efficient electric water heater with glass-lined tank.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(145 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 95,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Electrical (8 more) -->
+                <div class="product-card" data-category="electrical">
+                    <img src="Wire Set1.jpg" alt="Wire Set" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>12 AWG Wire (100ft Roll)</h3>
+                        <p class="product-description">Copper wire for residential electrical wiring projects.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(178 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 6,00</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <img src="Switch Plate.jpg" alt="Switch Plate" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>Decorative Switch Plate (10-Pack)</h3>
+                        <p class="product-description">Modern switch plates in various finishes for home decor.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(134 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 2,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <img src="Circuit Breaker.jpg" alt="Circuit Breaker" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>20-Amp Circuit Breaker</h3>
+                        <p class="product-description">Single-pole circuit breaker for electrical panel installation.
+                        </p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(156 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 6,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <img src="Wire Nuts_.jpg" alt="Wire Nuts" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>Wire Connectors Assortment (100-Pack)</h3>
+                        <p class="product-description">Assorted wire nuts for secure electrical connections.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(234 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 2,800</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <img src="Extension Cord.jpg" alt="Extension Cord" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>Heavy-Duty Extension Cord (50ft)</h3>
+                        <p class="product-description">12-gauge extension cord with multiple outlets and
+                            weather-resistant design.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(189 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 12,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+
+
+
+
+
+
+
+
+
+
+                <div class="product-card" data-category="electrical">
+                    <img src="2.jpg" alt="Voltage Tester" class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>Non-Contact Voltage Tester</h3>
+                        <p class="product-description">Digital voltage tester for safe electrical testing without
+                            contact.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="count">(167 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 5,500</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <img src="cable.jpg" alt="Cable Management"
+                        class="product-img">
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>Cable Management Kit</h3>
+                        <p class="product-description">Organize and conceal cables with clips, ties, and raceways.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="count">(145 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 4,200</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="electrical">
+                    <img src="Ceiling Fan.jpg" alt="Ceiling Fan" class="product-img">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-info">
+                        <span class="product-category">Electrical</span>
+                        <h3>52" Ceiling Fan with Light</h3>
+                        <p class="product-description">Energy-efficient ceiling fan with integrated LED light and remote
+                            control.</p>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="count">(198 reviews)</span>
+                        </div>
+                        <div class="product-price">LKR 45,000</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">Add to Cart</button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+              
+
+
+
+
+
+
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn">Previous</button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="homepage.html" class="footer-logo">
+                        <i class="fas fa-tools"></i> Premium Hardware
+                    </a>
+                    <p>Your one-stop shop for all hardware tools and equipment, powered by AI to provide you with the
+                        best recommendations for your projects.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 353 main street,Kalmunai,
+                            Sri Lanka
+
+                        </li>.
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> 0771026466</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> hamyanmohamed875@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Premium Hardware. All rights reserved. | <a href="#" style="color: #9ca3af;">Privacy
+                        Policy</a> | <a href="#" style="color: #9ca3af;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product filtering functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('searchInput');
+            const sortDropdown = document.getElementById('sortDropdown');
+            const productsGrid = document.getElementById('productsGrid');
+            const products = Array.from(document.querySelectorAll('.product-card'));
+
+            // Filter by category
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const category = this.getAttribute('data-category');
+                    filterProducts(category);
+                });
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+                const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+
+                products.forEach(product => {
+                    const title = product.querySelector('h3').textContent.toLowerCase();
+                    const description = product.querySelector('.product-description').textContent.toLowerCase();
+                    const category = product.getAttribute('data-category');
+
+                    const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+                    if (matchesSearch && matchesCategory) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+
+            // Sort functionality
+            sortDropdown.addEventListener('change', function () {
+                const sortBy = this.value;
+                const activeCategory = document.querySelector('.filter-btn.active').getAttribute('data-category');
+                const visibleProducts = products.filter(product => {
+                    const category = product.getAttribute('data-category');
+                    return activeCategory === 'all' || category === activeCategory;
+                });
+
+                visibleProducts.sort((a, b) => {
+                    switch (sortBy) {
+                        case 'price-low':
+                            return parseFloat(a.querySelector('.product-price').textContent.replace(/[^\d.]/g, '')) -
+                                parseFloat(b.querySelector('.product-price').textContent.replace(/[^\d.]/g, ''));
+                        case 'price-high':
+                            return parseFloat(b.querySelector('.product-price').textContent.replace(/[^\d.]/g, '')) -
+                                parseFloat(a.querySelector('.product-price').textContent.replace(/[^\d.]/g, ''));
+                        case 'rating':
+                            return parseInt(b.querySelector('.count').textContent.match(/\d+/)[0]) -
+                                parseInt(a.querySelector('.count').textContent.match(/\d+/)[0]);
+                        default:
+                            return 0;
+                    }
+                });
+
+                // Reorder products in grid
+                visibleProducts.forEach(product => {
+                    productsGrid.appendChild(product);
+                });
+            });
+
+            function filterProducts(category) {
+                products.forEach(product => {
+                    if (category === 'all' || product.getAttribute('data-category') === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            }
+
+            // Wishlist functionality
+            document.querySelectorAll('.btn-wishlist').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (this.classList.contains('active')) {
+                        icon.className = 'fas fa-heart';
+                    } else {
+                        icon.className = 'far fa-heart';
+                    }
+                });
+            });
+
+            // Add to cart functionality
+            document.querySelectorAll('.btn-cart').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const productCard = this.closest('.product-card');
+                    const productName = productCard.querySelector('h3').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    const price = parseFloat(productPrice.replace(/[^\d.]/g, ''));
+
+                    // Add to cart using Cart object from script.js
+                    Cart.add({
+                        id: Date.now(),
+                        name: productName,
+                        price: price
+                    });
+
+                    showNotification(`${productName} added to cart!`, 'success');
+                });
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

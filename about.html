@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Premium Hardware</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* About Content */
+        .about-section {
+            padding: 5rem 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4b5563;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .features {
+            margin-top: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .feature-icon {
+            background: var(--gradient-primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .feature-text h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .feature-text p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            overflow: hidden;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .member-role {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <a href="homepage.html" class="logo">
+                <i class="fas fa-tools"></i>
+                <span>Premium Hardware</span>
+            </a>
+            <div class="nav-links">
+                <a href="homepage.html">Home</a>
+                <a href="categories.html">Categories</a>
+                <a href="products.html">Products</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="cart.html" class="btn btn-outline"
+                    style="color: var(--primary-color); border-color: var(--primary-color);">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge"
+                        style="display: none; background: #ef4444; color: white; padding: 2px 6px; border-radius: 50%; font-size: 0.75rem; margin-left: 5px;">0</span>
+                </a>
+                <a href="login.html" class="btn btn-outline">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </a>
+                <a href="register.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Premium Hardware</h1>
+            <p>Your trusted partner in hardware solutions, powered by AI technology</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img-container">
+                    <img src="is.jpg" alt="About Us" class="about-img">
+                </div>
+                <div class="about-text">
+                    <h2>Revolutionizing Hardware Shopping with AI</h2>
+                    <p>At Premium Hardware, we're transforming the way you shop for hardware tools and equipment. Our
+                        advanced AI-powered recommendation system analyzes your project requirements, skill level, and
+                        budget to provide personalized tool suggestions that perfectly match your needs.</p>
+                    <p>Whether you're a DIY enthusiast tackling home improvement projects or a professional contractor
+                        working on large-scale construction, our intelligent system helps you make informed decisions
+                        and find exactly what you're looking for.</p>
+
+                    <div class="features">
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Smart Recommendations</h4>
+                                <p>Get personalized tool suggestions based on your specific project requirements and
+                                    preferences.</p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Expert Guidance</h4>
+                                <p>Access expert advice and tutorials to help you use your tools effectively and safely.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Fast Delivery</h4>
+                                <p>Get your tools delivered to your doorstep with our fast and reliable shipping
+                                    network.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Products Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Customer Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-color);">Meet Our Team</h2>
+                <p style="font-size: 1.1rem; color: #6b7280; max-width: 600px; margin: 0 auto;">Our dedicated team of
+                    experts is committed to providing you with the best hardware solutions and customer service.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="h.jpeg" alt="MR.A.M. Hamyan - CEO & Founder">
+                    </div>
+                    <div class="member-name">MR.A.M. Hamyan</div>
+                    <div class="member-role">CEO & Founder</div>
+                    <div class="member-bio">With over 15 years in the hardware industry, Rajesh leads our vision of
+                        revolutionizing hardware shopping with AI technology.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="a.jpeg" alt="MR. M.S. Akees - CTO">
+                    </div>
+                    <div class="member-name">MR. M.S. Akees</div>
+                    <div class="member-role">CTO</div>
+                    <div class="member-bio">Priya oversees our AI development and ensures our recommendation system
+                        provides the most accurate suggestions.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="w.jpeg" alt="MR. M.Asnaf - Head of Operations">
+                    </div>
+                    <div class="member-name">MR. M.Asnaf</div>
+                    <div class="member-role">Head of Operations</div>
+                    <div class="member-bio">Amit manages our supply chain and logistics to ensure fast and reliable
+                        delivery of your hardware needs.</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-img">
+                        <img src="t.jpeg" alt="MR.A.M. Thanseer - Customer Success Manager">
+                    </div>
+                    <div class="member-name">MR.A.M. Thanseer</div>
+                    <div class="member-role">Customer Success Manager</div>
+                    <div class="member-bio">Sneha leads our customer support team to ensure every customer has an
+                        exceptional shopping experience.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="homepage.html" class="footer-logo">
+                        <i class="fas fa-tools"></i> Premium Hardware
+                    </a>
+                    <p>Your one-stop shop for all hardware tools and equipment, powered by AI to provide you with the
+                        best recommendations for your projects.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="homepage.html">Home</a></li>
+                        <li><a href="categories.html">Categories</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-heading">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> 353 main street, Kalmunai,
+                            Sri Lanka</li>
+                        <li><i class="fas fa-phone" style="margin-right: 10px;"></i> 0771026466</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 10px;"></i> hamyanmhamd875@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Premium Hardware. All rights reserved. | <a href="#" style="color: #9ca3af;">Privacy
+                        Policy</a> | <a href="#" style="color: #9ca3af;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
